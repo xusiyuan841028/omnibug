@@ -44,7 +44,7 @@ module.exports = function (grunt) {
             "providers": {
                 "files": ["src/providers/**"],
                 "tasks": [
-                    "build-test-providers",
+                    // "build-test-providers",
                     "build-providers"
                 ],
                 "options": {

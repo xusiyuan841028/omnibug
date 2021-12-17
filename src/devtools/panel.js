@@ -693,7 +693,7 @@ window.Omnibug = (() => {
         });
 
         let colTitleWrapper = createElement("div", {
-            "classes": ["column", "col-3", "col-lg-4", "col-md-4", "col-sm-5"],
+            "classes": ["column", "col-5", "col-lg-4", "col-md-4", "col-sm-5"],
             "children": [requestTypeEl, colTitleSpan, colTitleRedirect, colTitleMultiple],
             "attributes": {
                 "title": `${request.provider.name} ${requestTypeValue.value}`
