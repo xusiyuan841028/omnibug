@@ -1,5 +1,5 @@
 /**
- * Shoplazza 神策数据
+ * Shopify 数据
  *
  * @class
  * @extends BaseProvider
@@ -30,48 +30,44 @@ function isPlainObject(value) {
     return Object.getPrototypeOf(value) === proto;
 }
 
-function atou(str) {
-    return decodeURIComponent(escape(window.atob(str)));
-}
-
-class ShoplazzaProvider extends BaseProvider {
+class ShopifyProvider extends BaseProvider {
     constructor() {
         super();
-        this._key = "SHOPLAZZA";
-        this._pattern = /https:\/\/(r|r1024|r-pre-release)\.shoplazza\.com\//;
-        this._name = "Shoplazza Data";
+        this._key = "SHOPIFY";
+        this._pattern = /https:\/\/monorail-edge\.shopifysvc\.com\//;
+        this._name = "Shopify Data";
         this._type = "marketing";
-        this._keywords = ["Shoplazza", "Data"];
+        this._keywords = ["Shopify", "Data"];
     }
 
-    parsePostData(postData = "") {
-        const data = JSON.parse(atou(new URLSearchParams(postData).get("data")));
-        const params = [];
-
-        function parseObject(value, prefix = "") {
-            Object.entries(value).forEach(entry => {
-                const key = prefix ? `${prefix}.${entry[0]}` : entry[0];
-                if (isPlainObject(entry[1])) {
-                    parseObject(entry[1], key);
-                } else {
-                    params.push([key, entry[1].toString()]);
-                }
-            });
-        }
-        parseObject(data);
-        this.currentEvent = data.event;
-        return params;
-    }
+    // parsePostData(postData = "") {
+    // console.log("shopify", postData);
+    // const params = [];
+    // const data = postData;
+    //
+    // function parseObject(value, prefix = "") {
+    // Object.entries(value).forEach(entry => {
+    // const key = prefix ? `${prefix}.${entry[0]}` : entry[0];
+    // if (isPlainObject(entry[1])) {
+    // parseObject(entry[1], key);
+    // } else {
+    // params.push([key, entry[1].toString()]);
+    // }
+    // });
+    // }
+    // parseObject(data);
+    // this.currentEvent = data.event;
+    // return params;
+    // }
 
     handleCustom(url, params) {
-        let results = [];
+        const results = [];
         let event = params.get("event") || /* istanbul ignore next: fallback */ "other";
 
         let requestType = event;
         if (requestType === "$pageview") {
             requestType = "Page View";
-        } else if (requestType === "web_vitals" || requestType === "timing") {
-        // } else if (!requestType.startsWith("$")) {
+        } else if (!requestType.startsWith("$")) {
             requestType = event.toLowerCase();
             requestType = requestType.split("_").map(word => {
                 return word.charAt(0).toUpperCase() + word.slice(1);
@@ -313,7 +309,7 @@ class ShoplazzaProvider extends BaseProvider {
                 "group": "checkout"
             },
             "properties.data": {
-                name: "Checkout Setting(properties.data)",
+                name: "Checkout Setting",
                 "group": "checkout"
             }
         };
@@ -322,23 +318,23 @@ class ShoplazzaProvider extends BaseProvider {
     getPerformanceKeys() {
         return {
             "properties.lcp": {
-                "name": "Largest Contentful Paint (LCP)(properties.lcp)",
+                "name": "Largest Contentful Paint (LCP)",
                 "group": "perf"
             },
             "properties.fid": {
-                "name": "First Input Delay (FID)(properties.fid)",
+                "name": "First Input Delay (FID)",
                 "group": "perf"
             },
             "properties.cls": {
-                "name": "Cumulative Layout Shift (CLS)(properties.cls)",
+                "name": "Cumulative Layout Shift (CLS)",
                 "group": "perf"
             },
             "properties.fcp": {
-                "name": "First Contentful Paint (FCP)(properties.fcp)",
+                "name": "First Contentful Paint (FCP)",
                 "group": "perf"
             },
             "properties.ttfb": {
-                "name": "Time to First Byte (TTFB)(properties.ttfb)",
+                "name": "Time to First Byte (TTFB)",
                 "group": "perf"
             },
         };
@@ -347,39 +343,40 @@ class ShoplazzaProvider extends BaseProvider {
     getTimingKeys() {
         return {
             "properties.first_contentful_paint": {
-                "name": "First Contentful Paint (FCP)(properties.first_contentful_paint)",
+                "name": "First Contentful Paint (FCP)",
                 "group": "timing"
             },
             "properties.first": {
-                "name": "First Screen Paint(FP)(properties.first)",
+                "name": "First Screen Paint",
                 "group": "timing"
             },
+            
             "properties.redirect": {
-                "name": "Redirect(properties.redirect)",
+                "name": "Redirect",
                 "group": "timing"
             },
             "properties.request": {
-                "name": "Request Time: From Connected to First Byte(properties.request)",
+                "name": "Request Time: From Connected to First Byte",
                 "group": "timing"
             },
             "properties.response": {
-                "name": "Response Time: From First Byte to Last Byte(properties.response)",
+                "name": "Response Time: From First Byte to Last Byte",
                 "group": "timing"
             },
             "properties.onload": {
-                "name": "Onload Time: From Fetch to Loaded(properties.onload)",
+                "name": "Onload Time: From Fetch to Loaded",
                 "group": "timing"
             },
             "properties.domready": {
-                "name": "DOM Ready(properties.domready)",
+                "name": "DOM Ready",
                 "group": "timing"
             },
             "properties.dns": {
-                "name": "DNS Time(properties.dns)",
+                "name": "DNS Time",
                 "group": "timing"
             },
             "properties.tcp": {
-                "name": "TCP Time(properties.tcp)",
+                "name": "TCP Time",
                 "group": "timing"
             },
         };
@@ -388,35 +385,35 @@ class ShoplazzaProvider extends BaseProvider {
     getDOMElementKeys() {
         return {
             "properties.className": {
-                "name": "Element Class(className)",
+                "name": "Element Class",
                 "group": "dom"
             },
             "properties.$element_class_name": {
-                "name": "Element Class($element_class_name)",
+                "name": "Element Class",
                 "group": "dom"
             },
             "properties.$element_type": {
-                "name": "Element Type($element_type)",
+                "name": "Element Type",
                 "group": "dom"
             },
             "properties.$element_selector": {
-                "name": "Element Selector($element_selector)",
+                "name": "Element Selector",
                 "group": "dom"
             },
             "properties.input_id": {
-                "name": "Element Id(input_id)",
+                "name": "Element Id",
                 "group": "dom"
             },
             "properties.name": {
-                "name": "Element Name(name)",
+                "name": "Element Name",
                 "group": "dom"
             },
             "properties.$element_name": {
-                "name": "Element Name($element_name)",
+                "name": "Element Name",
                 "group": "dom"
             },
             "properties.value": {
-                "name": "Element Value(value)",
+                "name": "Element Value",
                 "group": "dom"
             },
         };

@@ -242,7 +242,7 @@ nav.navbar {
   font-size: .8em;
   margin-right: .5em;
   padding: .35em;
-  width: 150px;
+  width: 220px;
   text-align: center;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -387,6 +387,8 @@ body.dark {
   /* Default colors, can be overridden in settings*/
   [data-request-type] { background-color: #AED581; color: #333; }
   [data-request-type="Page View"] { background-color: #90CAF9; }
+  [data-request-type="Web Vitals"] { background-color: #FF5000; }
+  [data-request-type="Timing"] { background-color: #FF5000; }
   details.request.redirected [data-request-type] { background-color: #333; color: #999; }
 
   .table.table-striped tbody tr:nth-of-type(odd) {
