@@ -3586,7 +3586,7 @@ grunt-text-replace@^0.4.0:
   resolved "https://registry.npmmirror.com/grunt-text-replace/-/grunt-text-replace-0.4.0.tgz#db9d9ce59e2fe49da277e9dbc195c3e11cfb16c2"
   integrity sha512-A4dFGpOaD/TQpeOlDK/zP962X1qG7KcOqPiSXOWOIeAKMzzpoDJYZ8Sz56iazI5+kTqeTa+IaEEl5c4sk+QN+Q==
 
-grunt@^1.1.0:
+grunt@^1.5.2:
   version "1.6.1"
   resolved "https://registry.npmmirror.com/grunt/-/grunt-1.6.1.tgz#0b4dd1524f26676dcf45d8f636b8d9061a8ede16"
   integrity sha512-/ABUy3gYWu5iBmrUSRBP97JLpQUm0GgVveDCp6t3yRNIoltIYw7rEj3g5y1o2PGPR2vfTRGa7WC/LZHLTXnEzA==
