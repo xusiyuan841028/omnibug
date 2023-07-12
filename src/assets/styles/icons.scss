@@ -7,12 +7,13 @@ $icons: (
     "Adobe Experience Cloud ID": $iconPath + "ADOBEAUDIENCEMANAGER16x16.png",
     "Adobe Dynamic Tag Manager": $iconPath + "ADOBEDYNAMICTAGMANAGER16x16.png",
     "Adobe Heartbeat": $iconPath + "ADOBEHEARTBEAT16x16.png",
-    "Adobe Launch": $iconPath + "ADOBELAUNCH16x16.png", 
-    "Adobe Launch China Node": $iconPath + "ADOBELAUNCH16x16.png", 
+    "Adobe Launch": $iconPath + "ADOBELAUNCH16x16.png",
+    "Adobe Launch China Node": $iconPath + "ADOBELAUNCH16x16.png",
     "Adobe Target": $iconPath + "ADOBETARGET16x16.png",
     "Adobe Experience Platform Web SDK": $iconPath + "ADOBEWEBSDK16x16.png",
     "AT Internet": $iconPath + "ATINTERNET16x16.png",
     "Bing Ads": $iconPath + "BINGADS16x16.png",
+    "BitKeep Data": $iconPath + "BITKEEP16x16.png",
     "Comscore": $iconPath + "COMSCORE16x16.png",
     "Criteo OneTag": $iconPath + "CRITEOONETAG16x16.png",
     "Demandbase Engagement": $iconPath + "DEMANDBASEENGAGEMENT16x16.png",
@@ -52,11 +53,5 @@ $icons: (
 @mixin iconRule($title, $path) {
     &[title="#{$title}"]::before {
        content: url($path);
-     } 
+     }
 }
-
-
-
-    
-
-
